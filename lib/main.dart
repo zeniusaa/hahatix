@@ -41,8 +41,8 @@ class MyApp extends StatelessWidget {
                 child: const Text("Sign In"),
                 onPressed: () async {
                   SignInSignUpResult result = await AuthServices.signIn(
-                    "jennie@blackpink.com",
-                    "123456",
+                    "barron@plpp.com",
+                    "0123456",
                   );
 
                   if (result.user == null) {
