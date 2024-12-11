@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "297630927350",
+    "project_id": "plpp-10f00",
+    "storage_bucket": "plpp-10f00.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297630927350:android:9936e86a039d5a110e5fd7",
+        "android_client_info": {
+          "package_name": "com.example.hahatix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdt540Cw24hgCxnG3LcLmWmgkwkrhCds4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
