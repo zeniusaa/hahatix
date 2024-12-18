@@ -1,59 +1,33 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:hahatix/services/services.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+
+import 'bloc/blocs.dart';
+import 'ui/pages/pages.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                child: const Text("Sign Up"),
-                onPressed: () async {
-                  SignInSignUpResult result = await AuthServices.signUp(
-                    "barron@plpp.com",
-                    "123456",
-                    "barron",
-                    ["Action", "Horror", "Music", "Drama"],
-                    "Korean",
-                  );
-
-                  if (result.user == null) {
-                    print(result.message);
-                  } else {
-                    print(result.user.toString());
-                  }
-                },
-              ),
-              ElevatedButton(
-                child: const Text("Sign In"),
-                onPressed: () async {
-                  SignInSignUpResult result = await AuthServices.signIn(
-                    "barron@plpp.com",
-                    "0123456",
-                  );
-
-                  if (result.user == null) {
-                    print(result.message);
-                  } else {
-                    print(result.user.toString());
-                  }
-                },
-              ),
-            ],
-          ),
+    return StreamProvider<auth.User?>.value(
+      value: AuthServices.userStream,
+      initialData: null, // Tambahkan inisialisasi
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => PageBloc()),
+          BlocProvider(create: (_) => UserBloc()),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Wrapper(),
         ),
       ),
     );
