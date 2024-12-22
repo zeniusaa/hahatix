@@ -73,3 +73,4 @@ class BottomNavBarClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 
 }
+
