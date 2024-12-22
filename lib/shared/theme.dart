@@ -2,10 +2,10 @@ part of 'shared.dart';
 
 const double defaultMargin = 24;
 
-Color mainColor = Color(0xFF503E9D);
-Color accentColor1 = Color(0xFF2C1F63);
-Color accentColor2 = Color(0xFFFBD460);
-Color accentColor3 = Color(0xFFADADAD);
+const Color mainColor = Color(0xFF503E9D);
+const Color accentColor1 = Color(0xFF2C1F63);
+const Color accentColor2 = Color(0xFFFBD460);
+const Color accentColor3 = Color(0xFFADADAD);
 
 TextStyle blackTextFont = GoogleFonts.raleway()
     .copyWith(color: Colors.black, fontWeight: FontWeight.w500);
