@@ -8,7 +8,8 @@ import 'package:provider/provider.dart';
 import 'bloc/blocs.dart';
 import 'ui/pages/pages.dart';
 
-//contoh fungsi github
+//contoh fungsi github 2
+//contoh berikutnya
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
