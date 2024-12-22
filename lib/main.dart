@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import 'bloc/blocs.dart';
 import 'ui/pages/pages.dart';
 
+//contoh fungsi github
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
