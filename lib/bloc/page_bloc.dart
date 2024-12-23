@@ -28,8 +28,5 @@ class PageBloc extends Bloc<PageEvent, PageState> {
     on<GoToPreferencePage>((event, emit) {
       emit(OnPreferencePage(event.registrasionData));
     });
-    on<GoToAccountConfirmationPage>((event, emit) {
-      emit(OnAccountConfirmationPage(event.registrasionData));
-    });
   }
 }
