@@ -19,6 +19,8 @@ class User extends Equatable {
     this.selectedLanguage = 'en',
   });
 
+
+
   @override
   String toString() {
     return "[$id] - ${name ?? 'Unknown'}, $email";
