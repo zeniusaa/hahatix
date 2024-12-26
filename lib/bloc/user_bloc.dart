@@ -22,9 +22,5 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<SignOut>((event, emit) {
       emit(UserInitial());
     });
-    on<SignOut>((event, emit) {
-      emit(UserInitial());
-    });
-    
   }
 }
