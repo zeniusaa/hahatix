@@ -1,11 +1,12 @@
 part of 'pages.dart';
 
+File? imageFileToUpload;
+
 class MoviePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        // NOTE: Header
         Container(
           decoration: BoxDecoration(
             color: accentColor1,
@@ -17,14 +18,18 @@ class MoviePage extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(defaultMargin, 20, defaultMargin, 30),
           child: BlocBuilder<UserBloc, UserState>(
             builder: (_, state) {
-              // Periksa apakah state adalah UserLoaded
               if (state is UserLoaded) {
-                // Ambil data user dari state
+                if (imageFileToUpload != null) {
+                  uploadImage(imageFileToUpload!).then((downloadURL) {
+                    imageFileToUpload = null;
+                    context
+                        .read<UserBloc>()
+                        .add(UpdateData(profilePicture: downloadURL));
+                  });
+                }
                 final user = state.user;
-
                 return Row(
                   children: <Widget>[
-                    // Profil Picture
                     Container(
                       padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(

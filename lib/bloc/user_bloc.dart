@@ -8,7 +8,6 @@ part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(UserInitial()) {
-    // Handler for LoadUser
     on<LoadUser>((event, emit) async {
       try {
         User user = await UserServices.getUser(event.id);
@@ -18,9 +17,23 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       }
     });
 
-    // Handler for SignOut
     on<SignOut>((event, emit) {
       emit(UserInitial());
+    });
+
+    on<UpdateData>((event, emit) async {
+      try {
+        if (state is UserLoaded) {
+          User user = (state as UserLoaded).user.copyWith(
+                name: event.name,
+                profilePicture: event.profilePicture,
+              );
+          await UserServices.updateUser(user);
+          emit(UserLoaded(user));
+        }
+      } catch (e) {
+        print(e);
+      }
     });
   }
 }
