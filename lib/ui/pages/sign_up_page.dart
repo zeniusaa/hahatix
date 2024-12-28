@@ -24,7 +24,9 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<ThemeBloc>().add(ChangeTheme(ThemeData().copyWith(primaryColor: accentColor1)));
+    context
+        .read<ThemeBloc>()
+        .add(ChangeTheme(ThemeData().copyWith(primaryColor: accentColor1)));
     return WillPopScope(
       onWillPop: () async {
         context.read<PageBloc>().add(GoToSplashPage());
@@ -72,9 +74,14 @@ class _SignUpPageState extends State<SignUpPage> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: (widget.registrasionData.profileImage == null)
-                                ? AssetImage("assets/user_pic.png") as ImageProvider<Object> 
-                                : FileImage(widget.registrasionData.profileImage!) as ImageProvider<Object>, // Casting properly
+                            image: (widget.registrasionData.profileImage ==
+                                    null)
+                                ? AssetImage("assets/user_pic.png")
+                                    as ImageProvider<Object>
+                                : FileImage(
+                                        widget.registrasionData.profileImage!)
+                                    as ImageProvider<
+                                        Object>, // Casting properly
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -82,12 +89,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: GestureDetector(
-                          onTap: () async{
-                             if (widget.registrasionData.profileImage == null) {
-                              widget.registrasionData.profileImage = await getImage();  // Menggunakan getimage untuk memilih gambar
+                          onTap: () async {
+                            if (widget.registrasionData.profileImage == null) {
+                              widget.registrasionData.profileImage =
+                                  await getImage(); // Menggunakan getimage untuk memilih gambar
                               setState(() {});
-                            }
-                            else {
+                            } else {
                               widget.registrasionData.profileImage = null;
                               setState(() {});
                             }
@@ -98,9 +105,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                image: AssetImage((widget.registrasionData.profileImage == null)
-                                    ? "assets/btn_add_photo.png"
-                                    : "assets/btn_del_photo.png"),
+                                image: AssetImage(
+                                    (widget.registrasionData.profileImage ==
+                                            null)
+                                        ? "assets/btn_add_photo.png"
+                                        : "assets/btn_del_photo.png"),
                               ),
                             ),
                           ),
@@ -146,7 +155,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(height: 16),
                 TextField(
                   controller: retypePasswordcontroller,
-                   obscureText: true,
+                  obscureText: true,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -165,48 +174,48 @@ class _SignUpPageState extends State<SignUpPage> {
                   elevation: 0,
                   onPressed: () {
                     if (!(namecontroller.text.trim() != "" &&
-                            emailcontroller.text.trim() != "" &&
-                            passwordcontroller.text.trim() != "" &&
-                            retypePasswordcontroller.text.trim() != "")) {
-                          Flushbar(
-                            duration: Duration(milliseconds: 1500),
-                            flushbarPosition: FlushbarPosition.TOP,
-                            backgroundColor: Color(0xFFFF5C83),
-                            message: "Silahkan isi dulu semua kolom",
-                          )..show(context);
-                        } else if (passwordcontroller.text !=
-                            retypePasswordcontroller.text) {
-                          Flushbar(
-                            duration: Duration(milliseconds: 1500),
-                            flushbarPosition: FlushbarPosition.TOP,
-                            backgroundColor: Color(0xFFFF5C83),
-                            message: "Kata sandi tidak cocok dengan yang dikonfirmasi",
-                          )..show(context);
-                        } else if (passwordcontroller.text.length < 6) {
-                          Flushbar(
-                            duration: Duration(milliseconds: 1500),
-                            flushbarPosition: FlushbarPosition.TOP,
-                            backgroundColor: Color(0xFFFF5C83),
-                            message: "Panjang password minimal 6 karakter",
-                          )..show(context);
-                        } else if (!EmailValidator.validate(
-                            emailcontroller.text)) {
-                          Flushbar(
-                            duration: Duration(milliseconds: 1500),
-                            flushbarPosition: FlushbarPosition.TOP,
-                            backgroundColor: Color(0xFFFF5C83),
-                            message: "Alamat email tidak sesuai format",
-                          )..show(context);
-                        } else {
-                          widget.registrasionData.name = namecontroller.text;
-                          widget.registrasionData.email = emailcontroller.text;
-                          widget.registrasionData.password =
-                              passwordcontroller.text;
+                        emailcontroller.text.trim() != "" &&
+                        passwordcontroller.text.trim() != "" &&
+                        retypePasswordcontroller.text.trim() != "")) {
+                      Flushbar(
+                        duration: Duration(milliseconds: 1500),
+                        flushbarPosition: FlushbarPosition.TOP,
+                        backgroundColor: Color(0xFFFF5C83),
+                        message: "Silahkan isi dulu semua kolom",
+                      )..show(context);
+                    } else if (passwordcontroller.text !=
+                        retypePasswordcontroller.text) {
+                      Flushbar(
+                        duration: Duration(milliseconds: 1500),
+                        flushbarPosition: FlushbarPosition.TOP,
+                        backgroundColor: Color(0xFFFF5C83),
+                        message:
+                            "Kata sandi tidak cocok dengan yang dikonfirmasi",
+                      )..show(context);
+                    } else if (passwordcontroller.text.length < 6) {
+                      Flushbar(
+                        duration: Duration(milliseconds: 1500),
+                        flushbarPosition: FlushbarPosition.TOP,
+                        backgroundColor: Color(0xFFFF5C83),
+                        message: "Panjang password minimal 6 karakter",
+                      )..show(context);
+                    } else if (!EmailValidator.validate(emailcontroller.text)) {
+                      Flushbar(
+                        duration: Duration(milliseconds: 1500),
+                        flushbarPosition: FlushbarPosition.TOP,
+                        backgroundColor: Color(0xFFFF5C83),
+                        message: "Alamat email tidak sesuai format",
+                      )..show(context);
+                    } else {
+                      widget.registrasionData.name = namecontroller.text;
+                      widget.registrasionData.email = emailcontroller.text;
+                      widget.registrasionData.password =
+                          passwordcontroller.text;
 
-                          context
-                              .read<PageBloc>()
-                              .add(GoToPreferencePage(widget.registrasionData));
-                        }
+                      context
+                          .read<PageBloc>()
+                          .add(GoToPreferencePage(widget.registrasionData));
+                    }
                   },
                 ),
               ],
