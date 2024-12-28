@@ -6,3 +6,4 @@ import 'package:google_fonts/google_fonts.dart';
 
 part 'shared_value.dart';
 part 'theme.dart';
+part 'shared_method.dart';
