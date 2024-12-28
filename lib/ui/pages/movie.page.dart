@@ -49,7 +49,9 @@ class MoviePage extends StatelessWidget {
                                 // Jika profilePicture kosong atau null, tampilkan gambar default
                                 image: (user.profilePicture?.isEmpty ?? true
                                     ? const AssetImage("assets/user_pic.png")
-                                    : NetworkImage(user.profilePicture!)) as ImageProvider<Object>,
+                                    : NetworkImage(
+                                        user.profilePicture!)) as ImageProvider<
+                                    Object>,
                                 fit: BoxFit.cover,
                               ),
                             ),
