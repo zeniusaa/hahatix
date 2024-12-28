@@ -33,9 +33,11 @@ class Wrapper extends StatelessWidget {
           return SignUpPage(pageState.registrasionData);
         } else if (pageState is OnPreferencePage) {
           return PreferencePage(pageState.registrasionData);
+        } else if (pageState is OnAccountConfirmationPage) {
+          return AccountConfirmationPage(pageState.registrationData);
         } else {
           return Container(); // Fallback jika tidak ada state yang cocok
-        } 
+        }
       },
     );
   }
