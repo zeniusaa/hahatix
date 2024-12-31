@@ -5,3 +5,4 @@ import 'package:equatable/equatable.dart';
 part 'user.dart';
 part 'registrasion_data.dart';
 part 'movie.dart';
+part 'promo.dart';
