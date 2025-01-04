@@ -131,7 +131,24 @@ class _SelectSchedulePageState extends State<SelectSchedulePage> {
             Icons.arrow_forward,
             color: isValid ? Colors.white : Color(0xFFBEBEBE),
           ),
-          onPressed: () {},
+          onPressed: () {
+            if (isValid) {
+              context.read<PageBloc>().add(GoToSelectSeatPage(Ticket(
+                    movieDetail: widget.movieDetail,
+                    theater: selectedTheater!,
+                    time: DateTime(
+                      selectedDate.year,
+                      selectedDate.month,
+                      selectedDate.day,
+                      selectedTime,
+                    ),
+                    bookingCode: randomAlphaNumeric(12).hashCode.toString(),
+                    seats: [],
+                    name: (userState as UserLoaded).user.name ?? 'Guest',
+                    totalPrice: 0,
+                  )));
+            }
+          },
         ),
       ),
     );

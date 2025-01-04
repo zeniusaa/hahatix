@@ -7,21 +7,15 @@ part 'page_state.dart';
 
 class PageBloc extends Bloc<PageEvent, PageState> {
   PageBloc() : super(OnInitialPage()) {
-    // Handler for GoToSplashPage
     on<GoToSplashPage>((event, emit) {
       emit(OnSplashPage());
     });
-
-    // Handler for GoToLoginPage
     on<GoToLoginPage>((event, emit) {
       emit(OnLoginPage());
     });
-
-    // Handler for GoToMainPage
     on<GoToMainPage>((event, emit) {
       emit(OnMainPage());
     });
-
     on<GoToRegistrasionPage>((event, emit) {
       emit(OnRegistrationPage(event.registrasionData));
     });
@@ -36,6 +30,15 @@ class PageBloc extends Bloc<PageEvent, PageState> {
     });
     on<GoToSelectSchedulePage>((event, emit) {
       emit(OnSelectSchedulePage(event.movieDetail));
+    });
+    on<GoToSelectSeatPage>((event, emit) {
+      emit(OnSelectSeatPage(event.ticket));
+    });
+    on<GoToCheckoutPage>((event, emit) {
+      emit(OnCheckoutPage(event.ticket));
+    });
+    on<GoToSuccessPage>((event, emit) {
+      emit(OnSuccessPage(event.ticket, event.transaction));
     });
   }
 }
