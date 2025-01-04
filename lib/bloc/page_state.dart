@@ -62,3 +62,31 @@ class OnSelectSchedulePage extends PageState {
   @override
   List<Object> get props => [movieDetail];
 }
+
+class OnSelectSeatPage extends PageState {
+  final Ticket ticket;
+
+  OnSelectSeatPage(this.ticket);
+
+  @override
+  List<Object> get props => [ticket];
+}
+
+class OnCheckoutPage extends PageState {
+  final Ticket ticket;
+
+  OnCheckoutPage(this.ticket);
+
+  @override
+  List<Object> get props => [ticket];
+}
+
+class OnSuccessPage extends PageState {
+  final Ticket ticket;
+  final AppTransaction transaction;
+
+  OnSuccessPage(this.ticket, this.transaction);
+
+  @override
+  List<Object> get props => [ticket, transaction];
+}

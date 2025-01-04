@@ -21,19 +21,53 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       emit(UserInitial());
     });
 
-    on<UpdateData>((event, emit) async {
-      try {
-        if (state is UserLoaded) {
-          User user = (state as UserLoaded).user.copyWith(
-                name: event.name,
-                profilePicture: event.profilePicture,
-              );
-          await UserServices.updateUser(user);
-          emit(UserLoaded(user));
+    on<UpdateData>(
+      (event, emit) async {
+        try {
+          if (state is UserLoaded) {
+            User user = (state as UserLoaded).user.copyWith(
+                  name: event.name,
+                  profilePicture: event.profilePicture,
+                );
+            await UserServices.updateUser(user);
+            emit(UserLoaded(user));
+          }
+        } catch (e) {
+          print(e);
         }
-      } catch (e) {
-        print(e);
-      }
-    });
+      },
+    );
+
+    on<TopUp>(
+      (event, emit) async {
+        if (state is UserLoaded) {
+          try {
+            User user = (state as UserLoaded).user.copyWith(
+                  balance: (state as UserLoaded).user.balance + event.amount,
+                );
+            await UserServices.updateUser(user);
+            emit(UserLoaded(user));
+          } catch (e) {
+            print(e);
+          }
+        }
+      },
+    );
+
+    on<Purchase>(
+      (event, emit) async {
+        if (state is UserLoaded) {
+          try {
+            User user = (state as UserLoaded).user.copyWith(
+                  balance: (state as UserLoaded).user.balance - event.amount,
+                );
+            await UserServices.updateUser(user);
+            emit(UserLoaded(user));
+          } catch (e) {
+            print(e);
+          }
+        }
+      },
+    );
   }
 }

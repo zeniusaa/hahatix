@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
 
 part 'user.dart';
@@ -9,3 +8,5 @@ part 'promo.dart';
 part 'movie_detail.dart';
 part 'credit.dart';
 part 'theater.dart';
+part 'ticket.dart';
+part 'app_transaction.dart';
