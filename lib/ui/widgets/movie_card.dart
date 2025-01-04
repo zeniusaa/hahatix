@@ -10,7 +10,7 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        onTap();
+        onTap(context);
       },
       child: Container(
         height: 140,
