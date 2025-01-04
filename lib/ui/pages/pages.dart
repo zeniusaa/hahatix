@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/rendering.dart';
 import 'package:hahatix/bloc/blocs.dart';
 import 'package:hahatix/services/services.dart';
 import 'package:hahatix/ui/widgets/widgets.dart';
@@ -25,3 +26,5 @@ part 'movie.page.dart';
 part 'sign_up_page.dart';
 part 'preference_page.dart';
 part 'account_confirmation_page.dart';
+part 'movie_detail_page.dart';
+part 'select_schedule_page.dart';

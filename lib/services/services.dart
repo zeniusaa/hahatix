@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter/material.dart';
 import 'package:hahatix/models/models.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hahatix/extensions/extensions.dart';
