@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hahatix/bloc/blocs.dart';
 import 'package:hahatix/extensions/extensions.dart';
@@ -33,3 +34,4 @@ part 'select_schedule_page.dart';
 part 'select_seat_page.dart';
 part 'checkout_page.dart';
 part 'success_page.dart';
+part 'ticket_page.dart';

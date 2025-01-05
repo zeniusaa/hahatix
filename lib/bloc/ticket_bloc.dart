@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hahatix/models/models.dart';
+import 'package:hahatix/services/services.dart';
 
 part 'ticket_event.dart';
 part 'ticket_state.dart';
@@ -13,7 +14,7 @@ class TicketBloc extends Bloc<TicketEvent, TicketState> {
         updatedTickets.add(event.ticket);
         emit(TicketState(updatedTickets));
       } else if (event is GetTickets) {
-        emit(TicketState(state.tickets));
+        emit(TicketState(await TicketServices.getTickets(event.userId)));
       }
     });
   }
