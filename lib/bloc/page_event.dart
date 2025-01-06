@@ -94,7 +94,6 @@ class GoToSuccessPage extends PageEvent {
 
 class GoToTicketDetailPage extends PageEvent {
   final Ticket ticket;
- 
 
   GoToTicketDetailPage(this.ticket);
 
