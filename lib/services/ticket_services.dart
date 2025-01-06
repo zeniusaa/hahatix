@@ -30,7 +30,7 @@ class TicketServices {
       List<Ticket> tickets = [];
       for (var document in documents) {
         MovieDetail movieDetail =
-            await MovieServices.getDetails(document['movieID']);
+            await MovieServices.getDetails(null, movieID: document['movieID']);
         tickets.add(Ticket(
           movieDetail: movieDetail,
           theater: Theater(document['theaterName']),
