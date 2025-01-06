@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hahatix/bloc/blocs.dart';
 import 'package:hahatix/extensions/extensions.dart';
@@ -15,11 +14,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:random_string/random_string.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'sign_in_page.dart';
 part 'wrapper.dart';
@@ -35,3 +36,5 @@ part 'select_seat_page.dart';
 part 'checkout_page.dart';
 part 'success_page.dart';
 part 'ticket_page.dart';
+part 'ticket_detail_page.dart';
+part 'profile_page.dart';

@@ -54,7 +54,8 @@ class MoviePage extends StatelessWidget {
 
           return Row(
             children: <Widget>[
-              _buildProfilePicture(userState.user.profilePicture ?? ""),
+              _buildProfilePicture(
+                  userState.user.profilePicture ?? "", context),
               SizedBox(width: 16),
               _buildUserInfo(userState.user, context),
             ],
@@ -69,31 +70,40 @@ class MoviePage extends StatelessWidget {
     );
   }
 
-  Widget _buildProfilePicture(String profilePicture) {
-    return Container(
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: Color(0xFF5F558B), width: 1),
-      ),
-      child: Stack(
-        children: <Widget>[
-          SpinKitFadingCircle(color: accentColor2, size: 50),
-          Container(
-            width: 50,
-            height: 50,
+  Widget _buildProfilePicture(String profilePicture, BuildContext context) {
+    return Row(
+      children: <Widget>[
+        GestureDetector(
+          onTap: () {
+            context.read<PageBloc>().add(GoToProfilePage());
+          },
+          child: Container(
+            padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              image: DecorationImage(
-                image: profilePicture.isEmpty
-                    ? AssetImage("assets/user_pic.png")
-                    : NetworkImage(profilePicture),
-                fit: BoxFit.cover,
-              ),
+              border: Border.all(color: Color(0xFF5F558B), width: 1),
+            ),
+            child: Stack(
+              children: <Widget>[
+                SpinKitFadingCircle(color: accentColor2, size: 50),
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: profilePicture.isEmpty
+                          ? AssetImage("assets/user_pic.png")
+                          : NetworkImage(profilePicture),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
