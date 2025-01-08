@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:firebase_storage/firebase_storage.dart';

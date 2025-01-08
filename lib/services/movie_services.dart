@@ -1,9 +1,10 @@
 part of 'services.dart';
 
 class MovieServices {
-  static Future<List<Movie>> getMovies(int page) async {
+  String? gendreId = null;
+  static Future<List<Movie>> getMovies(gendreId) async {
     String url =
-        "https://api.themoviedb.org/3/discover/movie?api_key=$api&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=$page";
+        "https://api.themoviedb.org/3/discover/movie?api_key=$api&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=$gendreId";
 
     var response = await http.get(Uri.parse(url));
 
@@ -18,48 +19,49 @@ class MovieServices {
   }
 
   static Future<MovieDetail> getDetails(Movie? movie,
-    {int? movieID, http.Client? client}) async {
-  // Jika movieID null, gunakan movie.id. 
-  String url =
-      "https://api.themoviedb.org/3/movie/${movieID ?? movie?.id}?api_key=$api&language=en-US";  // Perhatikan penggunaan movie?.id yang aman jika movie null.
+      {int? movieID, http.Client? client}) async {
+    // Jika movieID null, gunakan movie.id.
+    String url =
+        "https://api.themoviedb.org/3/movie/${movieID ?? movie?.id}?api_key=$api&language=en-US"; // Perhatikan penggunaan movie?.id yang aman jika movie null.
 
-  client ??= http.Client();
+    client ??= http.Client();
 
-  var response = await client.get(Uri.parse(url));
-  var data = json.decode(response.body);
+    var response = await client.get(Uri.parse(url));
+    var data = json.decode(response.body);
 
-  List genres = (data as Map<String, dynamic>)['genres'];
-  String language = 'Unknown';
+    List genres = (data as Map<String, dynamic>)['genres'];
+    String language = 'Unknown';
 
-  switch ((data as Map<String, dynamic>)['original_language'].toString()) {
-    case 'ja':
-      language = 'Japanese';
-      break;
-    case 'id':
-      language = 'Indonesian';
-      break;
-    case 'ko':
-      language = 'Korean';
-      break;
-    case 'en':
-      language = 'English';
-      break;
+    switch ((data as Map<String, dynamic>)['original_language'].toString()) {
+      case 'ja':
+        language = 'Japanese';
+        break;
+      case 'id':
+        language = 'Indonesian';
+        break;
+      case 'ko':
+        language = 'Korean';
+        break;
+      case 'en':
+        language = 'English';
+        break;
+    }
+
+    return movieID != null
+        ? MovieDetail(Movie.fromJson(data),
+            language: language,
+            genres: genres
+                .map((e) => (e as Map<String, dynamic>)['name'].toString())
+                .toList())
+        : MovieDetail(
+            movie ??
+                Movie.fromJson(
+                    data), // Jika movie null, buat movie baru dari data
+            language: language,
+            genres: genres
+                .map((e) => (e as Map<String, dynamic>)['name'].toString())
+                .toList());
   }
-
-  return movieID != null
-      ? MovieDetail(Movie.fromJson(data),
-          language: language,
-          genres: genres
-              .map((e) => (e as Map<String, dynamic>)['name'].toString())
-              .toList())
-      : MovieDetail(
-          movie ?? Movie.fromJson(data),  // Jika movie null, buat movie baru dari data
-          language: language,
-          genres: genres
-              .map((e) => (e as Map<String, dynamic>)['name'].toString())
-              .toList());
-}
-
 
   static Future<List<Credit>> getCredits(int movieID) async {
     String url =
