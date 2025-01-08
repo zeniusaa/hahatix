@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hahatix/bloc/blocs.dart';
 import 'package:hahatix/extensions/extensions.dart';
-import 'package:hahatix/main.dart';
 import 'package:hahatix/models/models.dart';
 import 'package:hahatix/shared/shared.dart';
 import 'package:intl/intl.dart';

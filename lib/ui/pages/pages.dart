@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:path/path.dart';
@@ -19,10 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:random_string/random_string.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 part 'sign_in_page.dart';
 part 'wrapper.dart';
 part 'main_page.dart';
