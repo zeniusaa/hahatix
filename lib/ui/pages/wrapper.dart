@@ -29,7 +29,10 @@ class Wrapper extends StatelessWidget {
         } else if (pageState is OnLoginPage) {
           return SignInPage();
         } else if (pageState is OnMainPage) {
-          return MainPage();
+          return MainPage(
+            bottomNavBarIndex: (pageState as OnMainPage).bottomNavBarIndex,
+            isExpired: (pageState as OnMainPage).isExpired,
+          );
         } else if (pageState is OnRegistrationPage) {
           return SignUpPage(pageState.registrasionData);
         } else if (pageState is OnPreferencePage) {
@@ -56,6 +59,8 @@ class Wrapper extends StatelessWidget {
           return SuccessTopUpPage(pageState.transaction);
         } else if (pageState is OnWalletPage) {
           return WalletPage(pageState.pageEvent);
+        } else if (pageState is OnEditProfilePage) {
+          return EditProfilePage(pageState.user);
         } else {
           return Container();
         }

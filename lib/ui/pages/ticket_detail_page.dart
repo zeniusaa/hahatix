@@ -9,7 +9,9 @@ class TicketDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        context.read<PageBloc>().add(GoToMainPage());
+        context.read<PageBloc>().add(GoToMainPage(
+            bottomNavBarIndex: 1,
+            isExpired: ticket.time.isBefore(DateTime.now())));
 
         return Future.value(false);
       },
@@ -30,7 +32,10 @@ class TicketDetailPage extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: GestureDetector(
                           onTap: () {
-                            context.read<PageBloc>().add(GoToMainPage());
+                            context.read<PageBloc>().add(GoToMainPage(
+                                bottomNavBarIndex: 1,
+                                isExpired:
+                                    ticket.time.isBefore(DateTime.now())));
                           },
                           child: Icon(
                             Icons.arrow_back,
@@ -254,7 +259,7 @@ class TicketTopClipper extends CustomClipper<Path> {
   double radius = 15;
 
   @override
-  Path getClip(Size size) {
+  Path getClip(size) {
     Path path = Path();
     path.lineTo(0, size.height - radius);
     path.quadraticBezierTo(radius, size.height - radius, radius, size.height);

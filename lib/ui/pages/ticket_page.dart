@@ -1,12 +1,23 @@
 part of 'pages.dart';
 
 class TicketPage extends StatefulWidget {
+  final bool isExpiredTicket;
+
+  TicketPage({this.isExpiredTicket = false});
+
   @override
   _TicketPageState createState() => _TicketPageState();
 }
 
 class _TicketPageState extends State<TicketPage> {
-  bool isExpiredTickets = false;
+  late bool isExpiredTickets;
+
+  @override
+  void initState() {
+    super.initState();
+
+    isExpiredTickets = widget.isExpiredTicket;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +133,7 @@ class _TicketPageState extends State<TicketPage> {
 
 class HeaderClipper extends CustomClipper<Path> {
   @override
-  Path getClip(Size size) {
+  Path getClip(size) {
     Path path = Path();
 
     path.lineTo(0, size.height - 20);

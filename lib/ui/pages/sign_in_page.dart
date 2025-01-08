@@ -80,21 +80,6 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                   SizedBox(height: 6),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        "Lupa Password? ",
-                        style: greyTextFont.copyWith(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Text(
-                        "reset",
-                        style: purpleTextFont.copyWith(fontSize: 12),
-                      ),
-                    ],
-                  ),
                   Center(
                     child: Container(
                       width: 50,
