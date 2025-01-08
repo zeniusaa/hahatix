@@ -217,7 +217,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                                   .copyWith(totalPrice: total),
                                               transaction));
                                     } else {
-                                      // # Uang tidak cukup
+                                      context.read<PageBloc>().add(
+                                          GoToTopUpPage(GoToTicketDetailPage(
+                                              widget.ticket)));
+                                      //
                                     }
                                   },
                                 ),
