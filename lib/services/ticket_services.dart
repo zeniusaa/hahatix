@@ -7,7 +7,7 @@ class TicketServices {
   static Future<void> saveTicket(String id, Ticket ticket) async {
     try {
       await ticketCollection.doc(ticket.bookingCode).set({
-        'movieID': ticket.movieDetail.id ?? "",
+        'movieID': ticket.movieDetail.id,
         'userID': id,
         'theaterName': ticket.theater.name,
         'time': ticket.time.millisecondsSinceEpoch,
