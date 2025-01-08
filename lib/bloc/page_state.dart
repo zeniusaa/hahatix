@@ -122,3 +122,12 @@ class OnSuccessTopUpPage extends PageState {
   @override
   List<Object> get props => [transaction];
 }
+
+class OnWalletPage extends PageState {
+  final PageEvent pageEvent;
+
+  OnWalletPage(this.pageEvent);
+
+  @override
+  List<Object> get props => [pageEvent];
+}
