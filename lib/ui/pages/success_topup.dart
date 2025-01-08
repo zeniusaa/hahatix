@@ -1,20 +1,19 @@
 part of 'pages.dart';
 
-class SuccessPage extends StatelessWidget {
-  final Ticket ticket;
+class SuccessTopUpPage extends StatelessWidget {
   final AppTransaction transaction;
 
-  SuccessPage(this.ticket, this.transaction);
+  SuccessTopUpPage(this.transaction);
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-          body: FutureBuilder(
-              future: processTicketOrder(context),
-              builder: (_, snapshot) => (snapshot.connectionState ==
-                      ConnectionState.done)
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: FutureBuilder(
+          future: _processTopUp(context),
+          builder: (_, snapshot) =>
+              (snapshot.connectionState == ConnectionState.done)
                   ? Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -23,16 +22,18 @@ class SuccessPage extends StatelessWidget {
                           height: 150,
                           margin: EdgeInsets.only(bottom: 70),
                           decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("assets/ticket_done.png"))),
+                            image: DecorationImage(
+                              image: AssetImage("assets/top_up_done.png"),
+                            ),
+                          ),
                         ),
                         Text(
-                          "Happy Watching!",
+                          "Emmm Yummy!",
                           style: blackTextFont.copyWith(fontSize: 20),
                         ),
                         SizedBox(height: 16),
                         Text(
-                          "You have successfully\nbought the ticket",
+                          "You have successfully\ntop up the wallet",
                           textAlign: TextAlign.center,
                           style: blackTextFont.copyWith(
                               fontSize: 16, fontWeight: FontWeight.w300),
@@ -49,13 +50,33 @@ class SuccessPage extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              "Back to Menu",
+                              "My Wallet",
                               style: whiteTextFont.copyWith(fontSize: 16),
                             ),
                             onPressed: () {
-                              context.read<PageBloc>().add(GoToMainPage());
+                              // Navigate to "My Wallet" page
                             },
                           ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "Discover new movie? ",
+                              style: greyTextFont.copyWith(
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                BlocProvider.of<PageBloc>(context)
+                                    .add(GoToMainPage());
+                              },
+                              child: Text(
+                                "Back to Home",
+                                style: purpleTextFont,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     )
@@ -64,18 +85,15 @@ class SuccessPage extends StatelessWidget {
                         color: mainColor,
                         size: 50,
                       ),
-                    )),
-        ));
+                    ),
+        ),
+      ),
+    );
   }
 
-  Future<void> processTicketOrder(BuildContext context) async {
-    context.read<UserBloc>().add(Purchase(ticket.totalPrice));
-    context.read<TicketBloc>().add(BuyTicket(ticket, transaction.userId));
+  Future<void> _processTopUp(BuildContext context) async {
+    context.read<UserBloc>().add(TopUp(transaction.amount));
 
-    // Simpan tiket ke database
-    await TicketServices.saveTicket(transaction.userId, ticket);
-
-    // Simpan transaksi ke database
     await AppTransactionServices.saveTransaction(transaction);
   }
 }
