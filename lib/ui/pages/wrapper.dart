@@ -54,8 +54,10 @@ class Wrapper extends StatelessWidget {
           return TopUpPage(pageState.pageEvent);
         } else if (pageState is OnSuccessTopUpPage) {
           return SuccessTopUpPage(pageState.transaction);
+        } else if (pageState is OnWalletPage) {
+          return WalletPage(pageState.pageEvent);
         } else {
-          return Container(); // Fallback jika tidak ada state yang cocok
+          return Container();
         }
       },
     );

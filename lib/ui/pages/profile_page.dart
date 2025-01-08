@@ -45,8 +45,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                   ),
                                   Container(
-                                    // width: 120,
-                                    // height: 120,
+                                    width: 120,
+                                    height: 120,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         image: DecorationImage(
@@ -123,9 +123,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // context
-                          //     .bloc<PageBloc>()
-                          //     .add(GoToWalletPage(GoToProfilePage()));
+                          context
+                              .read<PageBloc>()
+                              .add(GoToWalletPage(GoToProfilePage()));
                         },
                         child: Row(
                           children: <Widget>[

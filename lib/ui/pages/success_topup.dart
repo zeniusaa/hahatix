@@ -54,7 +54,9 @@ class SuccessTopUpPage extends StatelessWidget {
                               style: whiteTextFont.copyWith(fontSize: 16),
                             ),
                             onPressed: () {
-                              // Navigate to "My Wallet" page
+                              context
+                                  .read<PageBloc>()
+                                  .add(GoToWalletPage(GoToMainPage()));
                             },
                           ),
                         ),
