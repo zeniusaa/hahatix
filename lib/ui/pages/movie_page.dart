@@ -16,7 +16,7 @@ class MoviePage extends StatelessWidget {
 
         // Note: Browse Movie
         _buildSectionTitle("Browse Movie"),
-        _buildBrowseMovie(),
+        _buildBrowseMovie(context),
 
         // Note: Coming Soon
         _buildSectionTitle("Coming Soon"),
@@ -182,23 +182,18 @@ class MoviePage extends StatelessWidget {
     );
   }
 
-  Widget _buildBrowseMovie() {
-    return BlocBuilder<UserBloc, UserState>(
-      builder: (_, userState) {
-        if (userState is UserLoaded) {
-          return Container(
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: userState.user.selectedGenres
-                  .map((genre) => BrowseButton(genre))
-                  .toList(),
-            ),
-          );
-        } else {
-          return SpinKitFadingCircle(color: mainColor, size: 50);
-        }
-      },
+  Widget _buildBrowseMovie(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          BrowseButton("Action", "28"),
+          BrowseButton("War", "10752"),
+          BrowseButton("Music", "10402"),
+          BrowseButton("Crime", "80"),
+        ],
+      ),
     );
   }
 

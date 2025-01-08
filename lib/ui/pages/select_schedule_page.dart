@@ -159,7 +159,7 @@ class _SelectSchedulePageState extends State<SelectSchedulePage> {
     List<int> schedule = List.generate(5, (index) => 10 + index * 2);
     List<Widget> widgets = [];
 
-    for (var theater in dummyTheaters) {
+    for (var theater in TheaterName) {
       widgets.add(Container(
         margin: EdgeInsets.fromLTRB(defaultMargin, 0, defaultMargin, 16),
         child: Text(

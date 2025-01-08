@@ -8,10 +8,10 @@ sealed class MovieEvent extends Equatable {
 }
 
 final class FetchMovies extends MovieEvent {
-  final int page;
+  final String gendreId;
 
-  const FetchMovies(this.page);
+  const FetchMovies(this.gendreId);
 
   @override
-  List<Object> get props => [page];
+  List<Object> get props => [gendreId];
 }
