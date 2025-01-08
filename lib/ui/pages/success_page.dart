@@ -49,14 +49,36 @@ class SuccessPage extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              "Back to Menu",
+                              "My Tickets",
                               style: whiteTextFont.copyWith(fontSize: 16),
                             ),
                             onPressed: () {
-                              context.read<PageBloc>().add(GoToMainPage());
+                              context
+                                  .read<PageBloc>()
+                                  .add(GoToMainPage(bottomNavBarIndex: 1));
                             },
                           ),
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "Discover new movie? ",
+                              style: greyTextFont.copyWith(
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                BlocProvider.of<PageBloc>(context)
+                                    .add(GoToMainPage(bottomNavBarIndex: 0));
+                              },
+                              child: Text(
+                                "Back to Home",
+                                style: purpleTextFont,
+                              ),
+                            )
+                          ],
+                        )
                       ],
                     )
                   : Center(

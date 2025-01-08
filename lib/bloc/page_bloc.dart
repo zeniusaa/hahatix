@@ -14,7 +14,9 @@ class PageBloc extends Bloc<PageEvent, PageState> {
       emit(OnLoginPage());
     });
     on<GoToMainPage>((event, emit) {
-      emit(OnMainPage());
+      emit(OnMainPage(
+          bottomNavBarIndex: event.bottomNavBarIndex,
+          isExpired: event.isExpired));
     });
     on<GoToRegistrasionPage>((event, emit) {
       emit(OnRegistrationPage(event.registrasionData));
@@ -54,6 +56,9 @@ class PageBloc extends Bloc<PageEvent, PageState> {
     });
     on<GoToWalletPage>((event, emit) {
       emit(OnWalletPage(event.pageEvent));
+    });
+    on<GoToEditProfilePage>((event, emit) {
+      emit(OnEditProfilePage(event.user));
     });
   }
 }
