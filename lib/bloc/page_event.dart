@@ -105,3 +105,21 @@ class GoToProfilePage extends PageEvent {
   @override
   List<Object> get props => [];
 }
+
+class GoToTopUpPage extends PageEvent {
+  final PageEvent pageEvent;
+
+  GoToTopUpPage(this.pageEvent);
+
+  @override
+  List<Object> get props => [pageEvent];
+}
+
+class GoToSuccessTopUpPage extends PageEvent {
+  final AppTransaction transaction;
+
+  GoToSuccessTopUpPage(this.transaction);
+
+  @override
+  List<Object> get props => [transaction];
+}

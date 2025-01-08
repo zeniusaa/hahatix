@@ -104,3 +104,21 @@ class OnProfilePage extends PageState {
   @override
   List<Object> get props => [];
 }
+
+class OnTopUpPage extends PageState {
+  final PageEvent pageEvent;
+
+  OnTopUpPage(this.pageEvent);
+
+  @override
+  List<Object> get props => [pageEvent];
+}
+
+class OnSuccessTopUpPage extends PageState {
+  final AppTransaction transaction;
+
+  OnSuccessTopUpPage(this.transaction);
+
+  @override
+  List<Object> get props => [transaction];
+}
