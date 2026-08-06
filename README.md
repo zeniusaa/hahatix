@@ -1,15 +1,25 @@
-# hahatix
+# hahatix — New Modern Way to Buy Tickets
 
-project aplikasi mobile pembelian tiket bioskop
+Aplikasi mobile **pembelian tiket bioskop** — project kelompok.
 
-## Our Team
+## Fitur
 
-project flutter ini dikerjakan oleh kami ber-5 
+- Lihat daftar film & jadwal tayang
+- Pilih kursi secara interaktif
+- Proses pembelian tiket
+- Backend Firebase (Cloud Firestore)
 
-raka zeniusa barron
-adi maulana
-indra darmawan
-muhammad alfiansyah 
-tubagus daffa nabil
+## Tech Stack
 
-project ini dibuat untuk memenuhi tugas pemrograman perangkat bergerak.
+- Flutter / Dart
+- Firebase Cloud Firestore
+- State management: equatable, provider (get_it)
+
+## Cara Menjalankan
+
+```bash
+flutter pub get
+flutter run
+```
+
+> Pastikan kredensial Firebase (`firebase.json`) sudah dikonfigurasi sesuai project Firebase kamu.
